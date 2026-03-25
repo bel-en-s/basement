@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -11,11 +12,15 @@ export default function Home() {
   useEffect(() => {
     if (!titleRef.current) return;
 
-    const split = new SplitType(titleRef.current, {
-      types: "words,chars", //esto hace que se corte bien la palabra cuando termina
+    const el = titleRef.current;
+
+    const split = new SplitType(el, {
+      types: "words,chars",
     });
 
     const chars = split.chars;
+
+    gsap.set(el, { opacity: 1 });
 
     gsap.fromTo(
       chars,
@@ -31,12 +36,11 @@ export default function Home() {
         duration: 0.4,
         ease: "power3.inout",
         stagger: 0.025,
-
       }
     );
 
     return () => {
-      split.revert(); // importante cleanup
+      split.revert();
     };
   }, []);
 
@@ -47,12 +51,13 @@ export default function Home() {
       <div className="hero-inner container-main">
         <h1 ref={titleRef} className="h-hero">
           Research, insights, and the{" "}
-          <br  />
+          <br />
           science behind building brands{" "}
-          <br  />
+          <br />
           & websites.
         </h1>
       </div>
     </main>
   );
 }
+
