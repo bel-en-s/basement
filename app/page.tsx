@@ -1,9 +1,7 @@
-
 "use client";
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import SplitType from "split-type";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
@@ -14,34 +12,40 @@ export default function Home() {
 
     const el = titleRef.current;
 
-    const split = new SplitType(el, {
-      types: "words,chars",
-    });
+    const run = async () => {
+      const { default: SplitType } = await import("split-type");
 
-    const chars = split.chars;
+      const split = new SplitType(el, {
+        types: "words, chars",
+      });
 
-    gsap.set(el, { opacity: 1 });
+      const chars = split.chars;
 
-    gsap.fromTo(
-      chars,
-      {
-        y: 80,
-        opacity: 0,
-        filter: "blur(6px)",
-      },
-      {
-        y: 0,
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 0.4,
-        ease: "power3.inout",
-        stagger: 0.025,
-      }
-    );
+      gsap.set(el, { opacity: 1 });
 
-    return () => {
-      split.revert();
+      gsap.fromTo(
+        chars,
+        {
+          y: 60,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power3.out",
+          stagger: 0.02,
+        }
+      );
     };
+
+    if ("requestIdleCallback" in window) {
+      (window as any).requestIdleCallback(run);
+    } else {
+      setTimeout(run, 100);
+    }
+
+    return () => {};
   }, []);
 
   return (
@@ -60,4 +64,3 @@ export default function Home() {
     </main>
   );
 }
-
