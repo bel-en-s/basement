@@ -4,13 +4,19 @@ import { useRef } from "react";
 import gsap from "gsap";
 import "./MainButton.css";
 
-export default function MainButton({ text }) {
+type Props = {
+  text: string;
+};
+
+export default function MainButton({ text }: Props) {
   const btnRef = useRef<HTMLButtonElement>(null);
 
   const handleEnter = () => {
     if (!btnRef.current) return;
 
-    const light = btnRef.current.querySelector(".main-btn__bg--light");
+    const light = btnRef.current.querySelector(
+      ".main-btn__bg--light"
+    ) as HTMLElement;
 
     gsap.to(light, {
       opacity: 1,
@@ -27,7 +33,9 @@ export default function MainButton({ text }) {
   const handleLeave = () => {
     if (!btnRef.current) return;
 
-    const light = btnRef.current.querySelector(".main-btn__bg--light");
+    const light = btnRef.current.querySelector(
+      ".main-btn__bg--light"
+    ) as HTMLElement;
 
     gsap.to(light, {
       opacity: 0,

@@ -1,11 +1,11 @@
 import React from "react";
-import Tag from "./Tag";
+import Tag, { Category } from "./Tag";
 
 interface BlogCardProps {
   image: string;
   date: string;
   title: string;
-  category: string;
+  category: Category;
 }
 
 export default function BlogCard({
