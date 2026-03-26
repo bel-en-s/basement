@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -23,27 +24,29 @@ export default function Navbar() {
     <header ref={navRef} className="nav-wrapper">
       <nav className="nav nav-dark">
         <div className="nav-left">
-          <Image
-            src="/basement.png"
-            alt="Basement logo"
-            width={100}
-            height={15}
-            priority
-          />
+          <a href="/">
+            <Image
+              src="/basement.png"
+              alt="Basement logo"
+              width={100}
+              height={15}
+              priority
+            />
+          </a>
         </div>
 
         <div className="nav-center">
-          <a>Showcase</a>
-          <a>Services</a>
-          <a>People</a>
-          <a>Laboratory</a>
-          <a className="active">Blog</a>
-          <a>Ventures</a>
+          <a href="#showcase" tabIndex={0}>Showcase</a>
+          <a href="#services" tabIndex={0}>Services</a>
+          <a href="#people" tabIndex={0}>People</a>
+          <a href="#laboratory" tabIndex={0}>Laboratory</a>
+          <a href="#blog" className="active" tabIndex={0}>Blog</a>
+          <a href="#ventures" tabIndex={0}>Ventures</a>
         </div>
 
         <div className="nav-right">
           <MainButton text="Contact us" />
-          <button className="nav-hamburger">
+          <button className="nav-hamburger" aria-label="Toggle menu" tabIndex={0}>
             <span />
             <span />
             <span />
@@ -53,3 +56,4 @@ export default function Navbar() {
     </header>
   );
 }
+

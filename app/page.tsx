@@ -24,7 +24,7 @@ export default function Home() {
         opacity: 1,
         duration: 0.8,
         ease: "power3.out",
-        delay: 0.2, // Un pequeño delay para que cargue la fuente
+        delay: 0.2, 
       }
     );
   }, []);

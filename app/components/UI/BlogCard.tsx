@@ -1,4 +1,3 @@
-import React from "react";
 import Tag, { Category } from "./Tag";
 
 interface BlogCardProps {
@@ -29,7 +28,7 @@ export default function BlogCard({
 
         <div className="blog-card-footer">
           <Tag labels={category} variant="light" />
-          <button className="blog-card-more caption">READ MORE</button>
+          <button className="blog-card-more caption">read more</button>
         </div>
       </div>
     </article>

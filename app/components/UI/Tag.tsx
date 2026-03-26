@@ -2,14 +2,15 @@
 
 import "./Tag.css";
 
-export const CATEGORIES = {
-  ALL: "ALL POSTS",
-  WEB: "WEB DESIGN",
-  DEV: "DEVELOPMENT",
-  BRAND: "BRANDING",
+export const tagCategories = {
+  all: "all posts",
+  web: "Web Design",
+  dev: "Development",
+  brand: "branding",
 } as const;
 
-export type Category = typeof CATEGORIES[keyof typeof CATEGORIES];
+export type Category =
+  (typeof tagCategories)[keyof typeof tagCategories];
 
 type Props = {
   labels: Category | Category[];
@@ -21,8 +22,8 @@ export default function Tag({ labels, variant = "dark" }: Props) {
 
   return (
     <div className="tag-group">
-      {items.map((label) => (
-        <span key={label} className={`tag tag--${variant}`}>
+      {items.map((label, i) => (
+        <span key={`${label}-${i}`} className={`tag tag--${variant}`}>
           {label}
         </span>
       ))}
