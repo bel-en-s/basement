@@ -11,15 +11,16 @@ export default function Home() {
     if (!titleRef.current) return;
 
     const el = titleRef.current;
+    let splitInstance: any;
 
     const run = async () => {
       const { default: SplitType } = await import("split-type");
 
-      const split = new SplitType(el, {
-        types: "words, chars",
+      splitInstance = new SplitType(el, {
+        types: "words,chars", // ← FIX
       });
 
-      const chars = split.chars;
+      const chars = splitInstance.chars;
 
       gsap.set(el, { opacity: 1 });
 
@@ -45,7 +46,12 @@ export default function Home() {
       setTimeout(run, 100);
     }
 
-    return () => {};
+    return () => {
+      // cleanup importante para evitar duplicaciones
+      if (splitInstance) {
+        splitInstance.revert();
+      }
+    };
   }, []);
 
   return (
@@ -53,11 +59,9 @@ export default function Home() {
       <Navbar />
 
       <div className="hero-inner container-main">
-        <h1 ref={titleRef} className="h-hero">
-          Research, insights, and the{" "}
-          <br />
-          science behind building brands{" "}
-          <br />
+        <h1 ref={titleRef} className="h-hero" style={{ opacity: 0 }}>
+          Research, insights, and the <br />
+          science behind building brands <br />
           & websites.
         </h1>
       </div>
