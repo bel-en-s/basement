@@ -1,0 +1,53 @@
+.main-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 8px 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+
+  color: var(--color-white);
+}
+
+.main-btn__bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.main-btn__bg--dark {
+  background:
+    linear-gradient(0deg, #000, #000),
+    radial-gradient(
+      50% 100% at 50% 100%,
+      rgba(190, 190, 190, 0.3) 0%,
+      rgba(190, 190, 190, 0) 100%
+    );
+  opacity: 1;
+}
+
+.main-btn__bg--light {
+  background:
+    linear-gradient(0deg, #f8f8f8, #f8f8f8),
+    radial-gradient(
+      50% 100% at 50% 100%,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  opacity: 0;
+}
+
+.main-btn__text {
+  position: relative;
+  z-index: 1;
+}

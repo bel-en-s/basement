@@ -1,0 +1,30 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 13px;
+  padding: 0 6px;
+
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0;
+
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.tag--dark {
+  background: var(--color-grey-dark);
+}
+
+.tag--light {
+  background: var(--color-light-grey);
+}
+
+.tag-group {
+  display: flex;
+  gap: 6px;
+}
