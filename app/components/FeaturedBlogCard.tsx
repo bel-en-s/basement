@@ -1,10 +1,11 @@
-// FeaturedBlogCard.tsx
+
 "use client";
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./FeaturedBlogCard.css";
 import Tag, { tagCategories } from "./UI/Tag";
+import SecondaryButton from "./UI/SecondaryButton";
 
 export default function FeaturedBlogCard() {
   const imageRef = useRef<HTMLDivElement>(null);
@@ -13,7 +14,6 @@ export default function FeaturedBlogCard() {
   useEffect(() => {
     if (!imageRef.current || !cardRef.current) return;
 
-    // Animación de entrada
     gsap.to(cardRef.current, {
       y: 0,
       opacity: 1,
@@ -28,7 +28,7 @@ export default function FeaturedBlogCard() {
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = cardRef.current!.getBoundingClientRect();
-      const relX = e.clientX - rect.left; // posición relativa dentro de la card
+      const relX = e.clientX - rect.left;
       const relY = e.clientY - rect.top;
 
       const tiltX = gsap.utils.interpolate(5, -5, relY / rect.height);
@@ -74,9 +74,7 @@ export default function FeaturedBlogCard() {
           poised to transform the landscape of treatment for rare genetic conditions.
         </p>
 
-        <a href="#" className="card-link">
-          READ FULL BLOG POST
-        </a>
+        <SecondaryButton text="READ FULL BLOG POST" variant="orange" />
       </div>
     </article>
   );

@@ -61,7 +61,7 @@ body {
   overflow: hidden;
   background-image: url("/bg-hero.png");
   background-repeat: no-repeat;
-  background-position: center ;
+  background-position: center 25%;
   background-size: auto;
 }
 
@@ -116,9 +116,16 @@ body {
   letter-spacing: var(--tracking-tight);
   font-weight: 600;
   padding-top: 100px;
-  opacity: 0;
+  /* opacity: 0; */
   position: relative;
   z-index: 2;
+}
+
+.line-inner {
+  opacity: 0;
+  transform: translateY(100px);
+  filter: blur(10px);
+  will-change: transform, opacity, filter;
 }
 
 .h-hero span {
@@ -146,6 +153,6 @@ body {
   .h-hero {
     /* width: 80vw; */
     padding-top: 50px;
-    opacity: 0;
+    /* opacity: 0; */
   }
 }

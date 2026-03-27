@@ -1,0 +1,59 @@
+.secondary-btn {
+  display: inline-flex;
+  /* align-items: center;
+  justify-content: center; */
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  width: 50%;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 50;
+  pointer-events: auto !important;
+  transition: transform 0.1s ease, filter 0.2s ease;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+}
+
+.secondary-btn:hover {
+  filter: brightness(1.1);
+}
+
+.secondary-btn:active {
+  transform: scale(0.96);
+}
+
+.btn-orange {
+  background-color: var(--color-orange);
+  color: var(--color-black);
+}
+
+.btn-light {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.btn-dark {
+  background-color: var(--color-grey);
+  color: var(--color-white);
+}
+
+.secondary-btn__container {
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.secondary-btn__ghost {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  white-space: pre;
+}
+
+.secondary-btn__text {
+  grid-area: 1 / 1;
+  white-space: pre;
+}
