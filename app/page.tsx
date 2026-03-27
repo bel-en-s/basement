@@ -15,7 +15,7 @@ export default function Home() {
 
     const lines = containerRef.current.querySelectorAll(".line-inner");
 
-    // GSAP toma el control y anima desde el estado oculto de CSS
+
     gsap.fromTo(
       lines,
       {

@@ -59,7 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-image: url("/bg-hero.png");
+  background-image: url("/bg-hero.webp");
   background-repeat: no-repeat;
   background-position: center 25%;
   background-size: auto;

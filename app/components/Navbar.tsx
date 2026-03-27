@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className="nav-left">
           <a href="/">
             <Image
-              src="/basement.png"
+              src="/basement.webp"
               alt="Basement logo"
               width={100}
               height={15}

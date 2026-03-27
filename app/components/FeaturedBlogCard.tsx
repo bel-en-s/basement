@@ -55,7 +55,7 @@ export default function FeaturedBlogCard() {
   return (
     <article className="featured-card" ref={cardRef}>
       <div className="card-image" ref={imageRef}>
-        <img src="./featured-blog-image.png" alt="Creating Daylight" />
+        <img src="./featured-blog-image.webp" alt="Creating Daylight" />
       </div>
 
       <div className="card-content">
