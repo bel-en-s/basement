@@ -1,40 +1,26 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { client } from "./sanity/client";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FeaturedBlogCard from "./components/FeaturedBlogCard";
 import Blog from "./components/Blog";
+import HeroTitle from "./components/HeroTitle";
 import Image from "next/image";
 
-export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
+export default async function Home() {
+  const posts = await client.fetch(`
+    *[_type == "post"] | order(publishedAt desc) {
+      "id": _id,
+      "date": publishedAt,
+      title,
+      "categories": coalesce(categories[]->title, []),
+      "slug": slug.current,
+      "image": image.asset->url
+    }
+  `);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const lines = containerRef.current.querySelectorAll(".line-inner");
-
-
-    gsap.fromTo(
-      lines,
-      {
-        y: 100,
-        opacity: 0,
-        filter: "blur(10px)",
-      },
-      {
-        y: 0,
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 1.2,
-        ease: "expo.out",
-        stagger: 0.15,
-        delay: 0.2,
-      }
-    );
-  }, []);
+  const allCategories = await client.fetch(`
+    *[_type == "category" && defined(title)].title
+  `);
 
   return (
     <main className="hero">
@@ -43,32 +29,15 @@ export default function Home() {
         alt="Hero Background"
         width={100}
         height={100}
+        priority
+        className="hero-bg"
       />
       <Navbar />
-
       <div className="hero-inner container-main">
-        <h1 ref={containerRef} className="h-hero">
-          <span className="block overflow-hidden py-1">
-            <span className="line-inner block opacity-0 translate-y-[100px]">
-              Research, insights, and the
-            </span>
-          </span>
-          <span className="block overflow-hidden py-1">
-            <span className="line-inner block opacity-0 translate-y-[100px]">
-              science behind building brands
-            </span>
-          </span>
-          <span className="block overflow-hidden py-1">
-            <span className="line-inner block opacity-0 translate-y-[100px]">
-              & websites.
-            </span>
-          </span>
-        </h1>
-        
+        <HeroTitle />
         <FeaturedBlogCard />
       </div>
-
-      <Blog />
+      <Blog initialPosts={posts || []} categoriesFromSanity={allCategories || []} />      
       <Footer />
     </main>
   );

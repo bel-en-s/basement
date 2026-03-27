@@ -1,10 +1,10 @@
 "use client";
-
+// falta recuperar parallax de img
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import "./FeaturedBlogCard.css";
-import Tag, { tagCategories } from "./UI/Tag";
+import Tag from "./UI/Tag";
 import SecondaryButton from "./UI/SecondaryButton";
 
 export default function FeaturedBlogCard() {
@@ -22,31 +22,30 @@ export default function FeaturedBlogCard() {
       delay: 0.8,
     });
 
-    gsap.set(imageRef.current, { transformStyle: "preserve-3d" });
-    const imageRX = gsap.quickTo(imageRef.current, "rotationX", { ease: "power3" });
-    const imageRY = gsap.quickTo(imageRef.current, "rotationY", { ease: "power3" });
+    const rx = gsap.quickTo(imageRef.current, "rotationX", { duration: 0.5, ease: "power3" });
+    const ry = gsap.quickTo(imageRef.current, "rotationY", { duration: 0.5, ease: "power3" });
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = cardRef.current!.getBoundingClientRect();
-      const relX = e.clientX - rect.left;
-      const relY = e.clientY - rect.top;
-      const tiltX = gsap.utils.interpolate(5, -5, relY / rect.height);
-      const tiltY = gsap.utils.interpolate(-5, 5, relX / rect.width);
-      imageRX(tiltX);
-      imageRY(tiltY);
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      rx((y - 0.5) * -10);
+      ry((x - 0.5) * 10);
     };
 
     const handleMouseLeave = () => {
-      imageRX(0);
-      imageRY(0);
+      rx(0);
+      ry(0);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseleave", handleMouseLeave);
+    cardRef.current.addEventListener("mousemove", handleMouseMove);
+    cardRef.current.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseleave", handleMouseLeave);
+      if (cardRef.current) {
+        cardRef.current.removeEventListener("mousemove", handleMouseMove);
+        cardRef.current.removeEventListener("mouseleave", handleMouseLeave);
+      }
     };
   }, []);
 
@@ -59,15 +58,14 @@ export default function FeaturedBlogCard() {
           width={800} 
           height={500} 
           priority 
-          style={{ width: '100%', height: 'auto' }}
         />
       </div>
 
       <div className="card-content">
-        <span className="card-date">Jan 3, 2025</span>
-        <h2 className="card-title">Creating Daylight <br /> – The Devex</h2>
+        <span className="card-date mono">Jan 3, 2025</span>
+        <h2 className="card-title h1">Creating Daylight <br /> – The Devex</h2>
         <div className="card-tags">
-          <Tag labels={[tagCategories.dev, tagCategories.web]} variant="dark" />
+          <Tag labels={["Development", "Web Design"]} variant="dark" />
         </div>
         <p className="card-description body">
           We're thrilled to unveil our latest advancement in gene therapy,
