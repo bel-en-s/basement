@@ -56,14 +56,26 @@ body {
 .hero {
   position: relative;
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-image: url("/bg-hero.webp");
-  background-repeat: no-repeat;
-  background-position: center 25%;
-  background-size: auto;
 }
+
+.hero-bg-image {
+  z-index: 0;           /* La mandamos al fondo del todo */
+  object-fit: cover;    /* Evita que se deforme */
+  object-position: bottom 25%; /* Posición Desktop */
+}
+
+/* 👇 Aseguramos que el contenido tenga un z-index mayor */
+.nav-wrapper, /* Asegúrate de que tu Navbar tenga esta clase o similar */
+.hero-inner,
+.h-hero {
+  position: relative; 
+  z-index: 10;          /* Por encima de la imagen (0) */
+}
+
 
 .h1 {
   font-size: var(--text-h1);

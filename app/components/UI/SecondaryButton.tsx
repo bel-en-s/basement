@@ -4,7 +4,7 @@ import { useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import "./SecondaryButton.css";
 
-type ButtonVariant = "orange" | "light" | "dark";
+type ButtonVariant = "orange" | "light" | "dark" | "white" | "grey";
 
 interface Props {
   text: string;
@@ -21,6 +21,7 @@ export default function SecondaryButton({
 }: Props) {
   const textRef = useRef<HTMLSpanElement>(null);
   const [animating, setAnimating] = useState(false);
+
   const chars = "!<>-_\\/[]{}—=+*^?#________";
 
   const handleScramble = useCallback(() => {
@@ -57,7 +58,7 @@ export default function SecondaryButton({
       onMouseEnter={handleScramble}
       onClick={(e) => {
         e.stopPropagation();
-        if (onClick) onClick();
+        onClick?.();
       }}
     >
       <span className="secondary-btn__container">

@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import "./FeaturedBlogCard.css";
 import Tag, { tagCategories } from "./UI/Tag";
@@ -30,10 +30,8 @@ export default function FeaturedBlogCard() {
       const rect = cardRef.current!.getBoundingClientRect();
       const relX = e.clientX - rect.left;
       const relY = e.clientY - rect.top;
-
       const tiltX = gsap.utils.interpolate(5, -5, relY / rect.height);
       const tiltY = gsap.utils.interpolate(-5, 5, relX / rect.width);
-
       imageRX(tiltX);
       imageRY(tiltY);
     };
@@ -55,25 +53,26 @@ export default function FeaturedBlogCard() {
   return (
     <article className="featured-card" ref={cardRef}>
       <div className="card-image" ref={imageRef}>
-        <img src="./featured-blog-image.webp" alt="Creating Daylight" />
+        <Image 
+          src="/featured-blog-image.webp" 
+          alt="Creating Daylight" 
+          width={800} 
+          height={500} 
+          priority 
+          style={{ width: '100%', height: 'auto' }}
+        />
       </div>
 
       <div className="card-content">
         <span className="card-date">Jan 3, 2025</span>
-
-        <h2 className="card-title">
-          Creating Daylight <br /> – The Devex
-        </h2>
-
+        <h2 className="card-title">Creating Daylight <br /> – The Devex</h2>
         <div className="card-tags">
           <Tag labels={[tagCategories.dev, tagCategories.web]} variant="dark" />
         </div>
-
         <p className="card-description body">
           We're thrilled to unveil our latest advancement in gene therapy,
           poised to transform the landscape of treatment for rare genetic conditions.
         </p>
-
         <SecondaryButton text="READ FULL BLOG POST" variant="orange" />
       </div>
     </article>

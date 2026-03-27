@@ -1,4 +1,5 @@
 import Tag, { Category } from "./Tag";
+import SecondaryButton from "./SecondaryButton";
 
 interface BlogCardProps {
   image: string;
@@ -16,19 +17,19 @@ export default function BlogCard({
   return (
     <article className="blog-card">
       <div className="blog-card-image">
-        <img src={image} alt={title} />
+        <img className="blog-card-img" src={image} alt={title} />
       </div>
 
       <div className="blog-card-content">
         <div className="blog-card-meta">
-          <span className="mono">{date}</span>
+          <span >{date}</span>
         </div>
 
         <h3 className="blog-card-title">{title}</h3>
-
-        <div className="blog-card-footer">
           <Tag labels={category} variant="light" />
-          <button className="blog-card-more caption">read more</button>
+        <div className="blog-card-footer">
+
+          <SecondaryButton text="Read More" variant="white" />
         </div>
       </div>
     </article>

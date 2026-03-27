@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FeaturedBlogCard from "./components/FeaturedBlogCard";
 import Blog from "./components/Blog";
+import Image from "next/image";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,6 +38,12 @@ export default function Home() {
 
   return (
     <main className="hero">
+      <Image
+        src="/bg-hero.webp"
+        alt="Hero Background"
+        width={100}
+        height={100}
+      />
       <Navbar />
 
       <div className="hero-inner container-main">
