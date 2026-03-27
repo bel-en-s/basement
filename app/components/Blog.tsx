@@ -7,6 +7,8 @@ import BlogCard from "./UI/BlogCard";
 import "./Blog.css";
 import MainButton from "./UI/MainButton";
 
+
+
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -78,7 +80,7 @@ export default function Blog({ initialPosts, categoriesFromSanity }: BlogProps) 
   return (
     <section ref={sectionRef} className="blog-section">
       <div className="container-main">
-        <h2 className="blog-heading h1 reveal-item">
+        <h2 className="blog-heading reveal-item">
           Knowledge Is Meant <br /> to Be Shared
         </h2>
 
@@ -100,15 +102,15 @@ export default function Blog({ initialPosts, categoriesFromSanity }: BlogProps) 
           {filteredPosts.map((post) => (
             <div key={post.id} className="blog-card-wrapper">
                <BlogCard 
-                  id={post.id}
-                  title={post.title}
+                  image={post.image}
                   date={post.date ? new Date(post.date).toLocaleDateString('en-US', {
                     month: 'short',
                     day: 'numeric',
                     year: 'numeric'
                   }) : "No date"}
-                  category={post.categories} // Enviamos el array tal cual (vacío si no hay)
-                  image={post.image || "/blog-placeholder.webp"}
+                  title={post.title}
+                  slug={post.slug}
+                  category={post.categories}
                />
             </div>
           ))}
@@ -120,9 +122,11 @@ export default function Blog({ initialPosts, categoriesFromSanity }: BlogProps) 
           </p>
         )}
 
-        <div className="blog-load-more reveal-item">
-          <MainButton text="Load More" />
-        </div>
+        {filteredPosts.length > 0 && (
+          <div className="blog-load-more reveal-item">
+            <MainButton text="Load More" />
+          </div>
+        )}
       </div>
     </section>
   );

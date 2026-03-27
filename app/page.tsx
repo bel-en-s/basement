@@ -7,6 +7,20 @@ import HeroTitle from "./components/HeroTitle";
 import Image from "next/image";
 
 export default async function Home() {
+  async function getFooterData() {
+  const query = `*[_type == "footer"][0]{
+    backgroundImage,
+    sections[]{
+      title,
+      links[]{
+        label,
+        href
+      }
+    }
+  }`;
+  return await client.fetch(query);
+}
+  const footerData = await getFooterData();
   const posts = await client.fetch(`
     *[_type == "post"] | order(publishedAt desc) {
       "id": _id,
@@ -21,6 +35,8 @@ export default async function Home() {
   const allCategories = await client.fetch(`
     *[_type == "category" && defined(title)].title
   `);
+
+  
 
   return (
     <main className="hero">
@@ -38,7 +54,7 @@ export default async function Home() {
         <FeaturedBlogCard />
       </div>
       <Blog initialPosts={posts || []} categoriesFromSanity={allCategories || []} />      
-      <Footer />
+      <Footer data={footerData} />
     </main>
   );
 }
