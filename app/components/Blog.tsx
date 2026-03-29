@@ -79,7 +79,7 @@ export default function Blog({ initialPosts, categoriesFromSanity }: BlogProps) 
 
   return (
     <section ref={sectionRef} className="blog-section">
-      <div className="container-main">
+      <div className="container">
         <h2 className="blog-heading reveal-item">
           Knowledge Is Meant <br /> to Be Shared
         </h2>

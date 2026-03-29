@@ -21,3 +21,11 @@ I kept a strong focus on clean code and SEO. I used semantic HTML, maintained a 
 ## Final Notes
 
 The goal was to balance visual accuracy with solid frontend practices and a clean, scalable structure.
+
+
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- GSAP or Motion
+- Sanity

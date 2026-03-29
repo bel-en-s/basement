@@ -1,36 +1,24 @@
 .footer {
   width: 100%;
   background-color: var(--color-black);
-  padding-top: 80px;
+  padding: 50px 0;
   position: relative;
   overflow: hidden;
-  height: 500px;
-}
-
-.footer-container {
-  max-width: 1372px;
-  margin-inline: auto;
-  padding-inline: 16px;
-  position: relative;
-  z-index: 2;
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 80px;
-  margin-bottom: 80px;
+  width: 50%;
 }
 
 .footer-label {
+  display: block;
   color: var(--color-orange);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: var(--text-mono);
   text-transform: uppercase;
-  margin-bottom: 24px;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
+  margin-bottom: 32px;
+  letter-spacing: 0.05em;
 }
 
 .footer-list {
@@ -39,44 +27,61 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
-.footer-link {
+.footer-list a {
   color: var(--color-white);
   text-decoration: none;
-  font-family: var(--font-sans);
   font-size: var(--text-body);
+  font-weight: 500;
   transition: opacity 0.2s ease;
-  line-height: 1.1;
 }
 
-.footer-link:hover {
-  opacity: 0.7;
+.footer-list a:hover {
+  opacity: 0.6;
 }
 
-.footer-brand-wrapper {
+.footer-brand-area {
   position: relative;
-  width: 100%;
-  height: clamp(120px, 20vw, 240px);
-  margin-top: 20px;
-  pointer-events: none;
+  width: 110%; 
+  left: -5%;  
+  height: clamp(150px, 25vw, 400px);
+  margin-top: -20px;
 }
 
-.footer-brand-image {
+.footer-big-logo {
   object-fit: contain;
   object-position: bottom center;
-  filter: brightness(0.6);
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+  }
 }
 
 @media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-    margin-bottom: 60px;
+  .footer {
+    padding-top: 60px;
   }
 
-  .footer-brand-wrapper {
-    height: 100px;
+  .footer-grid {
+    grid-template-columns: 1fr; 
+    gap: 40px;
+    padding-bottom: 60px;
+  }
+
+  .footer-label {
+    margin-bottom: 16px;
+  }
+
+  .footer-brand-area {
+    height: 120px;
+    width: 100%;
+    left: 0;
   }
 }

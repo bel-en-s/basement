@@ -5,19 +5,22 @@
   left: 0;
   width: 100%;
   z-index: 50;
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 .nav {
   border: 1px solid rgba(255, 255, 255, 0.08);
-  max-width: 1372px;
+  /* Usamos un ancho relativo con un tope máximo */
+  width: 92%; 
+  max-width: 1200px;
+  
   margin: 0 auto;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 7.5px 8px 16px;
-  border-radius: 10px;
+  padding: 8px 8px 8px 20px;
+  border-radius: 12px;
   backdrop-filter: blur(20px);
   background: linear-gradient(90deg, rgba(74, 74, 74, 0.25) 0%, rgba(153, 153, 153, 0.25) 100%);
   box-shadow: 0px 3px 15px 0px #1212120D;
