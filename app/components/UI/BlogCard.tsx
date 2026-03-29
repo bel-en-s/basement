@@ -10,7 +10,7 @@ interface BlogCardProps {
   date: string;
   title: string;
   category: string[];
-  slug: string; // Añadimos el slug para la navegación
+  slug: string;
 }
 
 export default function BlogCard({
@@ -22,7 +22,7 @@ export default function BlogCard({
 }: BlogCardProps) {
   const showImage = image && image !== "" && !image.includes("placeholder");
 
-  // Formateo de fecha opcional para que se vea como en Figma (ej: Mar 24, 2026)
+  // formateo de fecha
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",

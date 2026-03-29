@@ -1,3 +1,5 @@
+//esto me lo recomendo hacer la ia por si quisiese hacer esto editable desde sanity, pero no me dio el tiempo. No se si lo ideal
+//seria tener todos los textos modularizados
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -14,9 +16,9 @@ export default function HeroTitle() {
     gsap.fromTo(
       lines,
       {
-        y: 100,
+        y: "110%",
         opacity: 0,
-        filter: "blur(10px)",
+        filter: "blur(8px)",
       },
       {
         y: 0,
@@ -24,7 +26,7 @@ export default function HeroTitle() {
         filter: "blur(0px)",
         duration: 1.2,
         ease: "expo.out",
-        stagger: 0.15,
+        stagger: 0.1,
         delay: 0.2,
       }
     );
@@ -32,21 +34,50 @@ export default function HeroTitle() {
 
   return (
     <h1 ref={containerRef} className="h-hero">
-      <span className="block overflow-hidden py-1">
-        <span className="line-inner block opacity-0">
-          Research, insights, and the
+      
+      {/* DESKTOP */}
+      <div className="hidden md:block">
+        <span className="block ">
+          <span className="line-inner block opacity-0">
+            Research, insights, and the
+          </span>
         </span>
-      </span>
-      <span className="block overflow-hidden py-1">
-        <span className="line-inner block opacity-0">
-          science behind building brands
+        <span className="block ">
+          <span className="line-inner block opacity-0">
+            science behind building brands
+          </span>
         </span>
-      </span>
-      <span className="block overflow-hidden py-1">
-        <span className="line-inner block opacity-0">
-          & websites.
+        <span className="block ">
+          <span className="line-inner block opacity-0">
+            & websites.
+          </span>
         </span>
-      </span>
+      </div>
+
+      {/* MOBILE: Ultra-compacto */}
+      <div className="block md:hidden leading-[0.9] tracking-tighter">
+        <span className="block  pb-0.5">
+          <span className="line-inner block opacity-0">
+            Research, insights,
+          </span>
+        </span>
+        <span className="blockpb-[2px]">
+          <span className="line-inner block opacity-0">
+            and the science
+          </span>
+        </span>
+        <span className="block  pb-0.5">
+          <span className="line-inner block opacity-0">
+            behind building
+          </span>
+        </span>
+        <span className="block pb-0.5">
+          <span className="line-inner block opacity-0">
+            brands & websites.
+          </span>
+        </span>
+      </div>
+
     </h1>
   );
 }

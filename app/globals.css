@@ -1,8 +1,12 @@
+@import "tailwindcss";
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
+
 
 :root {
   --font-sans: "Geist", sans-serif;
@@ -132,6 +136,7 @@ body {
 
 .h-hero {
   color: var(--color-white);
+      /* line-height: 1.2 !important; */
   font-size: var(--text-hero);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
@@ -163,6 +168,22 @@ body {
   }
 
   .h-hero {
-    padding-top: 50px;
+    padding-top: 20%;
+    width: 100vw;
+
   }
 }
+/* 
+@media (max-width: 768px) {
+  .h-hero {
+
+    line-height: 1.3;
+    font-size: 2.5rem; 
+    letter-spacing: -0.02em;
+  }
+  
+
+  .h-hero > span {
+    margin-bottom: 8px;
+  }
+} */

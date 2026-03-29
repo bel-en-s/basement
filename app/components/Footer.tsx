@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import './Footer.css'; // Asegúrate de crear este archivo CSS para los estilos del footer
+import './Footer.css'; 
 
 const Footer = () => {
   return (
