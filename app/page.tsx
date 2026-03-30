@@ -11,7 +11,6 @@ import Image from "next/image";
 
 import ReloadOnReturn from "./components/utils/reloadOnReturn";
 
-// export const dynamic = "force-dynamic";
 
 async function getData() {
 
@@ -59,7 +58,8 @@ export default async function Home() {
     alt="Hero Background"
     fill
     priority 
-    
+    fetchPriority="high" // <--- NUEVO: Prioridad máxima a nivel de red
+  loading="eager"
     quality={85}
     className="object-cover -z-10" 
     style={{ objectPosition: 'center -170%', }}

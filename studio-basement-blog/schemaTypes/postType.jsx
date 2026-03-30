@@ -14,13 +14,13 @@ export const postType = defineType({
       name: 'subtitle', 
       type: 'text', 
       title: 'Subtítulo',
-      description: 'Este texto aparece en la columna derecha del header '
+      description: 'Aparece en la columna derecha del header (H2)'
     }),
     defineField({ 
       name: 'excerpt', 
       type: 'text', 
       title: 'Extracto',
-      description: 'Este texto aparece en la columna derecha del header mas pequeño'
+      description: 'Aparece en la columna derecha del header más pequeño'
     }),
     defineField({ 
       name: 'slug', 
@@ -62,11 +62,11 @@ export const postType = defineType({
       type: 'boolean',
       initialValue: false,
     }),
-      // --- ENTRADA DE BLOG PERSONALIZABLE ---
+    
+    // blog
     defineField({
       name: 'body',
       title: 'Contenido del Artículo',
-      description: 'Aquí puedes añadir párrafos, títulos, listas y citas personalizadas.',
       type: 'array',
       of: [
         { 
@@ -75,11 +75,9 @@ export const postType = defineType({
             { title: 'Párrafo Normal', value: 'normal' },
             { title: 'Título Grande (H2)', value: 'h2' },
             { title: 'Título Medio (H3)', value: 'h3' },
-            { title: 'Cita Lateral', value: 'blockquote' }
           ],
           lists: [
             { title: 'Lista de puntos', value: 'bullet' },
-            { title: 'Lista numerada', value: 'number' }
           ],
           marks: {
             decorators: [
@@ -96,6 +94,31 @@ export const postType = defineType({
             { name: 'fullWidth', type: 'boolean', title: '¿Ancho completo?', initialValue: false }
           ]
         },
+        // 
+        {
+          name: 'sideQuote',
+          type: 'object',
+          title: 'Cita Lateral ',
+          fields: [
+            { 
+              name: 'quote', 
+              type: 'text', 
+              title: 'Texto de la Cita',
+              rows: 3
+            },
+            { 
+              name: 'author', 
+              type: 'string', 
+              title: 'Nombre del Autor' 
+            },
+            { 
+              name: 'role', 
+              type: 'string', 
+              title: 'Cargo / Rol' 
+            }
+          ]
+        },
+
         {
           name: 'customQuote',
           type: 'object',
