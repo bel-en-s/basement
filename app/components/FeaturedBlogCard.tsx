@@ -1,32 +1,50 @@
 "use client";
-// falta recuperar parallax de img
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import "./FeaturedBlogCard.css";
 import Tag from "./UI/Tag";
 import SecondaryButton from "./UI/SecondaryButton";
 
-export default function FeaturedBlogCard() {
+interface FeaturedBlogProps {
+  data: {
+    title: string;
+    image: string;
+    date: string;
+    categories: string[];
+    slug: string;
+    description?: string;
+  };
+}
+
+export default function FeaturedBlogCard({ data }: FeaturedBlogProps) {
   const imageRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!imageRef.current || !cardRef.current) return;
 
+    if (!data || !imageRef.current || !cardRef.current) return;
+
+ 
+    gsap.set(cardRef.current, { y: 30, opacity: 0 });
+
+    // Animación de entrada
     gsap.to(cardRef.current, {
       y: 0,
       opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-      delay: 0.8,
+      duration: 1.2,
+      ease: "power4.out",
+      delay: 0.5,
     });
+
 
     const rx = gsap.quickTo(imageRef.current, "rotationX", { duration: 0.5, ease: "power3" });
     const ry = gsap.quickTo(imageRef.current, "rotationY", { duration: 0.5, ease: "power3" });
 
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = cardRef.current!.getBoundingClientRect();
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;
       const y = (e.clientY - rect.top) / rect.height;
       rx((y - 0.5) * -10);
@@ -38,40 +56,66 @@ export default function FeaturedBlogCard() {
       ry(0);
     };
 
-    cardRef.current.addEventListener("mousemove", handleMouseMove);
-    cardRef.current.addEventListener("mouseleave", handleMouseLeave);
+    const currentCard = cardRef.current;
+    currentCard.addEventListener("mousemove", handleMouseMove);
+    currentCard.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      if (cardRef.current) {
-        cardRef.current.removeEventListener("mousemove", handleMouseMove);
-        cardRef.current.removeEventListener("mouseleave", handleMouseLeave);
-      }
+      currentCard.removeEventListener("mousemove", handleMouseMove);
+      currentCard.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [data]); // Se dispara cuando la data llega
+
+  if (!data) return null;
 
   return (
     <article className="featured-card" ref={cardRef}>
       <div className="card-image" ref={imageRef}>
-        <Image 
-          src="/featured-blog-image.webp" 
-          alt="Creating Daylight" 
-          width={800} 
-          height={500} 
-          priority 
-        />
+        {data.image ? (
+          <Image 
+            src={data.image} 
+            alt={data.title} 
+            width={800} 
+            height={500} 
+            priority 
+            className="featured-img-render"
+          />
+        ) : (
+          <div className="placeholder-img" style={{ width: 800, height: 500, background: '#222' }} />
+        )}
       </div>
 
       <div className="card-content">
-        <span className="card-date mono">Jan 3, 2025</span>
-        <h2 className="card-title h1">Creating Daylight <br /> – The Devex</h2>
+        <span className="card-date mono">
+          {data.date ? new Date(data.date).toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          }) : "Recent Post"}
+        </span>
+        
+
+        <h2 className="card-title h1">{data.title}</h2>
+        
         <div className="card-tags">
-          <Tag labels={["Development", "Web Design"]} variant="dark" />
+          {data.categories?.length > 0 && (
+            <Tag labels={data.categories} variant="dark" />
+          )}
         </div>
-        <p className="card-description body">
-          We're thrilled to unveil our latest advancement in gene therapy,
-          poised to transform the landscape of treatment for rare genetic conditions.
+        
+  <p className="card-description body">
+          {data.description ? (
+            data.description.length > 160 
+              ? `${data.description.substring(0, 160)}...` 
+              : data.description
+          ) : (
+            "No description available for this post."
+          )}
         </p>
-        <SecondaryButton text="READ FULL BLOG POST" variant="orange" />
+
+       <Link href={`/blog/${data.slug}`} className="inline-block">
+            <SecondaryButton text="Read More" variant="orange" />
+          </Link>
       </div>
     </article>
   );

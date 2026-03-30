@@ -11,6 +11,18 @@ export const postType = defineType({
       title: 'Título' 
     }),
     defineField({ 
+      name: 'subtitle', 
+      type: 'text', 
+      title: 'Subtítulo',
+      description: 'Este texto aparece en la columna derecha del header '
+    }),
+    defineField({ 
+      name: 'excerpt', 
+      type: 'text', 
+      title: 'Extracto',
+      description: 'Este texto aparece en la columna derecha del header mas pequeño'
+    }),
+    defineField({ 
       name: 'slug', 
       type: 'slug', 
       options: { source: 'title' },
@@ -32,6 +44,12 @@ export const postType = defineType({
       type: 'datetime', 
       title: 'Fecha de publicación' 
     }),
+    defineField({
+      name: 'order',
+      title: 'Orden de aparición',
+      type: 'number',
+      initialValue: 0,
+    }),
     defineField({ 
       name: 'image', 
       type: 'image', 
@@ -39,34 +57,55 @@ export const postType = defineType({
       options: { hotspot: true }
     }),
     defineField({
+      name: 'featured',
+      title: 'Featured Post',
+      type: 'boolean',
+      initialValue: false,
+    }),
+      // --- ENTRADA DE BLOG PERSONALIZABLE ---
+    defineField({
       name: 'body',
-      title: 'Contenido del Blog',
+      title: 'Contenido del Artículo',
+      description: 'Aquí puedes añadir párrafos, títulos, listas y citas personalizadas.',
       type: 'array',
       of: [
         { 
           type: 'block',
           styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'H2', value: 'h2' },
-            { title: 'H3', value: 'h3' },
-            { title: 'Quote', value: 'blockquote' }
+            { title: 'Párrafo Normal', value: 'normal' },
+            { title: 'Título Grande (H2)', value: 'h2' },
+            { title: 'Título Medio (H3)', value: 'h3' },
+            { title: 'Cita Lateral', value: 'blockquote' }
           ],
-          lists: [{ title: 'Bullet', value: 'bullet' }],
+          lists: [
+            { title: 'Lista de puntos', value: 'bullet' },
+            { title: 'Lista numerada', value: 'number' }
+          ],
+          marks: {
+            decorators: [
+              { title: 'Negrita', value: 'strong' },
+              { title: 'Itálica', value: 'em' },
+            ],
+          }
         },
         { 
           type: 'image',
-          options: { hotspot: true }
+          options: { hotspot: true },
+          fields: [
+            { name: 'caption', type: 'string', title: 'Pie de foto' },
+            { name: 'fullWidth', type: 'boolean', title: '¿Ancho completo?', initialValue: false }
+          ]
         },
-        defineField({
+        {
           name: 'customQuote',
           type: 'object',
-          title: 'Cita Destacada (Estilo Figma)',
+          title: 'Cita Destacada (Estilo Grande)',
           fields: [
-            { name: 'text', type: 'text', title: 'Texto de la cita' },
-            { name: 'author', type: 'string', title: 'Autor de la cita' },
-            { name: 'role', type: 'string', title: 'Cargo/Rol' }
+            { name: 'text', type: 'text', title: 'Texto de la Cita' },
+            { name: 'author', type: 'string', title: 'Nombre del Autor' },
+            { name: 'role', type: 'string', title: 'Cargo / Rol' }
           ]
-        })
+        }
       ]
     }),
   ],

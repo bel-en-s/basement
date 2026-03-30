@@ -1,3 +1,6 @@
+//acomodar imagen hero mobile
+//gsap entrance animation repeat
+
 import { client } from "./sanity/client";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -9,19 +12,23 @@ import Image from "next/image";
 export const dynamic = "force-dynamic";
 
 async function getData() {
+
+  //footer queria hacerlo modular también pero no me dio el tiempo
   const footerQuery = `*[_type == "footer"][0]{
     backgroundImage,
     sections[]{ title, links[]{ label, href } }
   }`;
-  
-  const postsQuery = `*[_type == "post"] | order(publishedAt desc) {
-    "id": _id,
-    "date": publishedAt,
-    title,
-    "categories": coalesce(categories[]->title, []),
-    "slug": slug.current,
-    "image": image.asset->url
-  }`;
+const postsQuery = `*[_type == "post"] | order(order asc) {
+  "id": _id,
+  "date": publishedAt,
+  title,
+  order, 
+  featured,
+  "categories": coalesce(categories[]->title, []),
+  "slug": slug.current,
+  "image": image.asset->url,
+  "description": array::join(body[0].children[].text, "") 
+}`;
 
   const categoriesQuery = `*[_type == "category" && defined(title)].title`;
 
@@ -35,12 +42,13 @@ async function getData() {
 }
 
 export default async function Home() {
-  const { footerData, posts, allCategories } = await getData();
+  const { posts, allCategories } = await getData();
+
+  const featuredPost = posts?.find((post: any) => post.featured === true);
 
   return (
     <main>
-      <section className="hero">
-        <Image
+            <Image
           src="/bg-hero.webp"
           alt="Hero Background"
           fill
@@ -49,16 +57,17 @@ export default async function Home() {
           className="hero-bg-image"
           sizes="100vw"
           style={{ 
-          objectFit: 'cover', 
-          objectPosition: 'center -200%',
-          // transform: 'scale(1)',   
-          transformOrigin: 'bottom center',     
-        }}
+            objectFit: 'cover', 
+            objectPosition: '5% 50%',
+     
+          }}
         />
+      <section className="hero" style={{ position: 'relative', minHeight: '100vh' }}>
+  
         <Navbar />
-        <div className="container">
+        <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <HeroTitle />
-          <FeaturedBlogCard />
+          {featuredPost && <FeaturedBlogCard data={featuredPost} />}
         </div>
       </section>
 
@@ -67,7 +76,7 @@ export default async function Home() {
           initialPosts={posts || []} 
           categoriesFromSanity={allCategories || []} 
         />      
-        <Footer/>
+        <Footer />
       </div>
     </main>
   );
