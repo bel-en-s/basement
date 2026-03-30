@@ -53,17 +53,17 @@ export default async function Home() {
     <main>
       {/* <ReloadOnReturn /> */}
       <section className="hero">
-<Image 
-    src="/bg-hero.webp" 
-    alt="Hero Background"
-    fill
-    priority 
-    fetchPriority="high" // <--- NUEVO: Prioridad máxima a nivel de red
-  loading="eager"
-    quality={85}
-    className="object-cover -z-10" 
-    style={{ objectPosition: 'center -170%', }}
-  />
+      <Image 
+          src="/bg-hero.webp" 
+          alt="Hero Background"
+          fill
+          priority 
+          fetchPriority="high" 
+        loading="eager"
+          quality={85}
+          className="object-cover -z-10" 
+          style={{ objectPosition: 'center -170%', }}
+        />
         <Navbar />
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <HeroTitle />

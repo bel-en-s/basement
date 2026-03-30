@@ -67,6 +67,7 @@
   --geist-mono-regular-14-desktop: 400 14px / 1.4 -0.01em;
 
   --geist-semibold-13-desktop: 600 13px / 1 0em;
+    --text-hero: 76px;
 }
 
 :root {
