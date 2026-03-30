@@ -1,0 +1,40 @@
+.title-blog {
+  font: var(--geist-semibold-38-desktop);
+  font-family: var(--font-sans);
+  line-height: 1.1;
+}
+
+.subtitle-blog {
+  font: var(--geist-semibold-24-desktop);
+  font-family: var(--font-sans);
+  line-height: 1.2;
+}
+
+.t-excerpt {
+  font: var(--geist-regular-16-desktop);
+  font-family: var(--font-sans);
+}
+
+.p-normal {
+  font: var(--geist-regular-16-desktop);
+  font-family: var(--font-sans);
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+      .subtitle-blog {
+  font: var(--geist-semibold-20-mobile);
+  font-family: var(--font-sans);
+  line-height: 1.2;
+}
+     .t-excerpt {
+    font: var(--geist-regular-14-mobile);
+  }
+  .p-normal {
+    font: var(--geist-regular-14-mobile);
+    font-family: var(--font-sans);
+    line-height: 1.3;
+  }
+
+}
+

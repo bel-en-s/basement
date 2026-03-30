@@ -29,8 +29,8 @@ export const postType = defineType({
       title: 'Slug (URL)' 
     }),
     defineField({
-      name: 'author',
-      title: 'Autor',
+      name: 'featuredText',
+      title: 'Featured Text',
       type: 'string',
     }),
     defineField({

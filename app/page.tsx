@@ -9,7 +9,9 @@ import Blog from "./components/Blog";
 import HeroTitle from "./components/HeroTitle";
 import Image from "next/image";
 
-export const dynamic = "force-dynamic";
+import ReloadOnReturn from "./components/utils/reloadOnReturn";
+
+// export const dynamic = "force-dynamic";
 
 async function getData() {
 
@@ -23,6 +25,7 @@ const postsQuery = `*[_type == "post"] | order(order asc) {
   "date": publishedAt,
   title,
   order, 
+  featuredText,
   featured,
   "categories": coalesce(categories[]->title, []),
   "slug": slug.current,
@@ -42,15 +45,25 @@ const postsQuery = `*[_type == "post"] | order(order asc) {
 }
 
 export default async function Home() {
+  
   const { posts, allCategories } = await getData();
 
   const featuredPost = posts?.find((post: any) => post.featured === true);
 
   return (
     <main>
-            
+      {/* <ReloadOnReturn /> */}
       <section className="hero">
-
+<Image 
+    src="/bg-hero.webp" 
+    alt="Hero Background"
+    fill
+    priority 
+    
+    quality={85}
+    className="object-cover -z-10" 
+    style={{ objectPosition: 'center -170%', }}
+  />
         <Navbar />
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <HeroTitle />

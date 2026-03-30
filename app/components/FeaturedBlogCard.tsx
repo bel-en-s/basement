@@ -12,6 +12,7 @@ interface FeaturedBlogProps {
     title: string;
     image: string;
     date: string;
+    featuredText: string;
     categories: string[];
     slug: string;
     description?: string;
@@ -64,7 +65,7 @@ export default function FeaturedBlogCard({ data }: FeaturedBlogProps) {
       currentCard.removeEventListener("mousemove", handleMouseMove);
       currentCard.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [data]); // Se dispara cuando la data llega
+  }, [data]); 
 
   if (!data) return null;
 
@@ -104,10 +105,10 @@ export default function FeaturedBlogCard({ data }: FeaturedBlogProps) {
         </div>
         
   <p className="card-description body">
-          {data.description ? (
-            data.description.length > 160 
-              ? `${data.description.substring(0, 160)}...` 
-              : data.description
+          {data.featuredText ? (
+            data.featuredText.length > 160 
+              ? `${data.featuredText.substring(0, 160)}...` 
+              : data.featuredText
           ) : (
             "No description available for this post."
           )}

@@ -6,55 +6,98 @@
   box-sizing: border-box;
 }
 
-
+/* =========================
+   TOKENS (DESIGN SYSTEM)
+========================= */
 
 :root {
+  /* FONTS */
   --font-sans: "Geist", sans-serif;
   --font-mono: "Geist Mono", monospace;
+
+  /* COLORS */
   --color-white: #E6E6E6;
   --color-black: #000000;
   --color-orange: #ff4d00;
   --color-dark-grey: rgba(46, 46, 46, 1);
   --color-grey: #666666;
   --color-light-grey: rgba(196, 196, 196, 1);
-  --text-hero: 76px;
-  --text-hero-mobile: 40px;
-  --text-h1: clamp(28px, 4vw, 38px);
-  --text-h2: 24px;
-  --text-body-lg: 20px;
-  --text-body: 16px;
-  --text-ui: 16px;
-  --text-mono: 14px;
-  --geist-semibold-13: 13px;
-  --leading-tight: 0.9;
-  --leading-normal: 1.3;
-  --leading-loose: 1.4;
-  --tracking-tight: -0.04em;
-  --tracking-mid: -0.03em;
-  --tracking-normal: 0em;
-  --tracking-mono: -0.01em;
 
+  /* TYPE SCALE (DESKTOP DEFAULT) */
+  --t-hero: 76px;
+  --t-h1: 38px;
+  --t-h2: 24px;
+  --t-body-lg: 20px;
+  --t-body: 16px;
+  --t-ui: 16px;
+  --t-mono: 14px;
+  --t-caption: 13px;
+
+  /* LINE HEIGHT */
+  --lh-tight: 0.9;
+  --lh-snug: 1.1;
+  --lh-normal: 1.3;
+  --lh-loose: 1.4;
+
+  /* LETTER SPACING */
+  --ls-tight: -0.04em;
+  --ls-mid: -0.03em;
+  --ls-normal: 0em;
+  --ls-mono: -0.01em;
+
+  /* LAYOUT */
   --container-width: 92%;
   --container-padding: 100px;
 }
+
+:root {
+  /* =========================
+     GEIST — DESKTOP
+  ========================= */
+
+  --geist-semibold-76-desktop: 600 76px / 0.9 -0.04em;
+  --geist-semibold-38-desktop: 600 38px / 0.95 -0.04em;
+  --geist-semibold-24-desktop: 600 24px / 1.1 -0.03em;
+  --geist-regular-24-desktop: 400 24px / 1.1 -0.03em;
+
+  --geist-semibold-16-desktop: 600 16px / 1.3 0em;
+  --geist-medium-16-desktop: 500 16px / 1.3 0em;
+  --geist-regular-16-desktop: 400 16px / 1.3 0em;
+
+  --geist-mono-regular-14-desktop: 400 14px / 1.4 -0.01em;
+
+  --geist-semibold-13-desktop: 600 13px / 1 0em;
+}
+
+:root {
+  /* =========================
+     GEIST — MOBILE
+  ========================= */
+
+  --geist-semibold-40-mobile: 600 40px / 0.9 -0.04em;
+  --geist-semibold-24-mobile: 600 24px / 1.1 -0.03em;
+  --geist-regular-20-mobile: 400 20px / 1.1 -0.03em;
+
+  --geist-semibold-16-mobile: 600 16px / 1.3 0em;
+  --geist-medium-16-mobile: 500 16px / 1.3 0em;
+  --geist-regular-16-mobile: 400 16px / 1.3 0em;
+
+  --geist-semibold-14-mobile: 600 14px / 1.3 0em;
+  --geist-regular-14-mobile: 400 14px / 1.3 0em;
+
+  --geist-mono-regular-14-mobile: 400 14px / 1.4 -0.01em;
+
+  --geist-semibold-13-mobile: 600 13px / 1 0em;
+}
+
+/* =========================
+   BASE
+========================= */
 
 html,
 body {
   height: auto;
   overflow-x: hidden;
-}
-
-.container {
-    width: 92%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-@media (max-width: 768px) {
-  .container {
-     max-width: 100%;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
 }
 
 body {
@@ -66,6 +109,16 @@ body {
   color: var(--color-white);
 }
 
+/* =========================
+   LAYOUT
+========================= */
+
+.container {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .container-main-hero {
   width: 100%;
   max-width: 1200px;
@@ -75,78 +128,39 @@ body {
   z-index: 2;
 }
 
-.hero {
-  position: relative;
-  width: 100%;
-  height: 120vh;
-  /* overflow: hidden; */
-
-  background-image: url("/bg-hero.webp");
-  /* background-size: cover; */
-  background-repeat: no-repeat;
-
-   background-position: center -70%;
-}
-
-/* .hero-bg-image {
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.2) translateY(20%);
-} */
 .content-wrapper {
   position: relative;
   z-index: 1;
   background-color: var(--color-black);
 }
 
-.h1 {
-  font-size: var(--text-h1);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  font-weight: 600;
-}
+/* =========================
+   HERO
+========================= */
 
-.h2 {
-  font-size: var(--text-h2);
-  line-height: 1.1;
-  letter-spacing: var(--tracking-mid);
-  font-weight: 600;
-}
-
-.body-lg {
-  font-size: var(--text-body-lg);
-  line-height: 1.1;
-  letter-spacing: var(--tracking-mid);
-}
-
-.body {
-  font-size: var(--text-body);
-  line-height: var(--leading-normal);
-}
-
-.ui {
-  font-size: var(--text-ui);
-  line-height: var(--leading-normal);
-  font-weight: 500;
-}
-
-.mono {
-  font-family: var(--font-mono);
-  font-size: var(--text-mono);
-  line-height: var(--leading-loose);
-  letter-spacing: var(--tracking-mono);
+.hero {
+  position: relative;
+  width: 100%;
+  height: 120vh;
+  /* background-image: url("/bg-hero.webp");
+  background-repeat: no-repeat;
+  background-position: center -70%; */
 }
 
 .h-hero {
-  color: var(--color-white);
-      /* line-height: 1.2 !important; */
-  font-size: var(--text-hero);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  font-family: var(--font-sans);
+  font-size: var(--t-hero);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
   font-weight: 600;
+  color: var(--color-white);
   padding-top: 100px;
   position: relative;
   z-index: 2;
+}
+
+.h-hero span {
+  display: inline-block;
 }
 
 .line-inner {
@@ -154,51 +168,138 @@ body {
   will-change: transform, opacity;
 }
 
-.h-hero span {
-  display: inline-block;
+/* =========================
+   TYPOGRAPHY SYSTEM (KEY)
+========================= */
+
+/* HERO */
+.t-hero {
+  font-size: var(--t-hero);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  font-weight: 600;
 }
+
+/* H1 */
+.t-h1 {
+  font-size: var(--t-h1);
+  line-height: 0.95;
+  letter-spacing: var(--ls-tight);
+  font-weight: 600;
+}
+
+/* H2 */
+.t-h2 {
+  font-size: var(--t-h2);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-mid);
+  font-weight: 600;
+}
+
+/* BODY LARGE */
+.t-body-lg {
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-mid);
+}
+
+/* BODY */
+.t-body {
+  font-size: var(--t-body);
+  line-height: var(--lh-normal);
+}
+
+/* UI */
+.t-ui {
+  font-size: var(--t-ui);
+  line-height: var(--lh-normal);
+  font-weight: 500;
+}
+
+/* MONO */
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  line-height: var(--lh-loose);
+  letter-spacing: var(--ls-mono);
+}
+
+/* CAPTION */
+.t-caption {
+  font-size: var(--t-caption);
+  line-height: 1;
+  font-weight: 600;
+}
+
+/* =========================
+   LEGACY CLASSES (compatibilidad)
+========================= */
+
+.h1 {
+  font-size: var(--t-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  font-weight: 600;
+}
+
+.h2 {
+  font-size: var(--t-h2);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-mid);
+  font-weight: 600;
+}
+
+.body-lg {
+  font-size: var(--t-body-lg);
+  line-height: var(--lh-snug);
+}
+
+.body {
+  font-size: var(--t-body);
+  line-height: var(--lh-normal);
+}
+
+.ui {
+  font-size: var(--t-ui);
+  line-height: var(--lh-normal);
+  font-weight: 500;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  line-height: var(--lh-loose);
+  letter-spacing: var(--ls-mono);
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 768px) {
   :root {
-    --text-h1: 24px;
-    --text-h2: 20px;
-    --text-body-lg: 18px;
-    --text-body: 14px;
-    --text-ui: 14px;
-    --text-mono: 14px;
-    --text-caption: 13px;
-    --text-hero: 40px;
+    --t-hero: 40px;
+    --t-h1: 24px;
+    --t-h2: 20px;
+    --t-body-lg: 18px;
+    --t-body: 14px;
+    --t-ui: 14px;
+    --t-mono: 14px;
+    --t-caption: 13px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .h-hero {
     padding-top: 25%;
     width: 100vw;
-
   }
+
   .hero {
-  position: relative;
-  width: 100%;
-  height: 120vh;
-  /* overflow: hidden; */
-
-  background-image: url("/bg-hero.webp");
-  /* background-size: cover; */
-  background-repeat: no-repeat;
-
-   background-position: center -25%;
-}
-}
-/* 
-@media (max-width: 768px) {
-  .h-hero {
-
-    line-height: 1.3;
-    font-size: 2.5rem; 
-    letter-spacing: -0.02em;
+    background-position: center -25%;
   }
-  
-
-  .h-hero > span {
-    margin-bottom: 8px;
-  }
-} */
+}
