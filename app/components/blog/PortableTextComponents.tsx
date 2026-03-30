@@ -1,23 +1,24 @@
 import { PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
+import "./PortableTextComponents.css"
 
 export const portableTextComponents: PortableTextComponents = {
-  marks: {
-    strong: ({ children }) => <strong className="font-semibold text-white">{children}</strong>,
-    underline: ({ children }) => (
-      <span className="underline decoration-1 underline-offset-4 decoration-white/40">
-        {children}
-      </span>
-    ),
-    link: ({ children, value }) => (
-      <a 
-        href={value.href} 
-        className="underline decoration-orange-500 hover:text-orange-500 transition-colors"
-      >
-        {children}
-      </a>
-    ),
-  },
+//   marks: {
+//     strong: ({ children }) => <strong className="font-semibold text-white">{children}</strong>,
+//     underline: ({ children }) => (
+//       <span className="underline decoration-1 underline-offset-4 decoration-white/40">
+//         {children}
+//       </span>
+//     ),
+//     link: ({ children, value }) => (
+//       <a 
+//         href={value.href} 
+//         className="underline decoration-orange-500 hover:text-orange-500 transition-colors"
+//       >
+//         {children}
+//       </a>
+//     ),
+//   },
   types: {
     image: ({ value }) => (
       <figure className={`my-16 md:my-24 ${value.fullWidth ? 'w-screen ml-[50%] -translate-x-1/2' : ''}`}>
@@ -37,43 +38,45 @@ export const portableTextComponents: PortableTextComponents = {
       </figure>
     ),
     customQuote: ({ value }) => (
-      <div className="my-20 py-12 border-y border-white/10 text-center md:text-left">
-        <blockquote className="text-[32px] md:text-[48px] font-medium tracking-tighter text-white mb-8 leading-[1.1]">
-          “{value.text}”
-        </blockquote>
-        <cite className="not-italic flex items-baseline gap-x-2">
-          <span className="t-mono text-[11px] uppercase text-white tracking-widest">{value.author}</span>
-          <span className="t-mono text-[10px] uppercase text-white/40 tracking-widest">/ {value.role}</span>
-        </cite>
+      <div className="my-20 py-12 ">
+       <div className="blog-post-quote-container">
+  <blockquote className="blog-post-quote-text">
+    “{value.text}”
+  </blockquote>
+</div>
+            <cite className="blog-post-quote-cite">
+            <span className="author">{value.author}</span>
+            <span className="role">/ {value.role}</span>
+            </cite>
       </div>
     ),
     sideQuote: ({ value }) => (
       <blockquote className="my-12 border-l border-white/30 pl-8 max-w-prose">
-        <div className="font-sans font-semibold text-[13px] md:text-[16px] leading-[100%] md:leading-[130%] tracking-normal">
-          <span className="text-white">“{value.quote}”</span>
-          <cite className="not-italic inline-flex items-baseline gap-x-1.5 ml-2">
-            <span className="text-[#A1A1A1]">— {value.author}</span>
+       <div className="blog-post-side-quote-content">
+        <span className="text-white">“{value.quote}”</span>
+        <cite className="not-italic inline-flex items-baseline gap-x-1.5 ml-2">
+            <span className="text-author">— {value.author}</span>
             {value.role && (
-              <span className="text-[#666666]">/ {value.role}</span>
+            <span className="text-role">/ {value.role}</span>
             )}
-          </cite>
+        </cite>
         </div>
       </blockquote>
     ),
   },
   block: {
     h2: ({ children }) => (
-      <h2 className="t-h2 text-white mt-20 mb-8 uppercase tracking-tighter">
-        {children}
-      </h2>
+    <h2 className="blog-post-h2">
+    {children}
+    </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-[22px] md:text-[26px] font-semibold leading-tight tracking-tight text-white mb-6">
+      <h3 className="blog-post-h3">
         {children}
       </h3>
     ),
     normal: ({ children }) => (
-      <p className="t-body mb-8 text-white max-w-prose leading-relaxed">
+      <p className="blog-post-p">
         {children}
       </p>
     ),

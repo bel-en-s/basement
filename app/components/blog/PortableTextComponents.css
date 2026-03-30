@@ -1,0 +1,99 @@
+.blog-post-h2 {
+  font: var(--geist-semibold-40-mobile) 'Geist', sans-serif;
+  letter-spacing: var(--tracking-40-mobile);
+  color: var(--color-white);
+  margin-top: 80px;
+  margin-bottom: 32px;
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-38-desktop) 'Geist', sans-serif;
+    letter-spacing: var(--tracking-38-desktop);
+  }
+}
+
+.blog-post-h3 {
+  font: var(--geist-semibold-14-mobile) 'Geist', sans-serif;
+  letter-spacing: var(--tracking-24-desktop);
+  color: var(--color-white);
+  margin-bottom: 24px;
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-24-desktop) 'Geist', sans-serif;
+    letter-spacing: var(--tracking-24-desktop);
+  }
+}
+
+.blog-post-p {
+  font: var(--geist-regular-14-mobile) 'Geist', sans-serif;
+  letter-spacing: 0;
+  color: var(--color-white);
+  margin-bottom: 32px;
+  max-width: 65ch;
+  line-height: 1.3;
+
+  @media (min-width: 1024px) {
+    font: var(--geist-regular-16-desktop) 'Geist', sans-serif;
+    letter-spacing: var(--tracking-16-desktop);
+  }
+}
+
+.blog-post-side-quote-content {
+  font: var(--geist-semibold-40-mobile) 'Geist', sans-serif;
+  letter-spacing: var(--tracking-40-mobile);
+  line-height: 0.9;
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-38-desktop) 'Geist', sans-serif;
+  
+    line-height: 0.95;
+  }
+}
+
+.text-author {
+  color: #a1a1a1;
+}
+
+.text-role {
+  color: #666666;
+}
+
+.blog-post-quote-cite {
+  font: var(--geist-semibold-13-mobile) ;
+
+  font-style: normal;
+  display: flex;
+
+  gap: 8px;
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-16-desktop) ;
+   
+  }
+}
+
+.blog-post-quote-cite .author {
+  color: var(--color-white);
+}
+
+.blog-post-quote-cite .role {
+  color: rgba(230, 230, 230, 0.4); 
+}
+
+/* .blog-post-quote-container {
+  margin: 80px 0;
+  padding: 48px 0;
+} */
+
+.blog-post-quote-text {
+  font: var(--geist-semibold-24-mobile) 'Geist', sans-serif;
+  letter-spacing: var(--tracking-24-mobile);
+  color: var(--color-white);
+  margin-bottom: 32px;
+  line-height: 1.1;
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-38-desktop) 'Geist', sans-serif;
+    letter-spacing: var(--tracking-38-desktop);
+    line-height: 0.95;
+  }
+}

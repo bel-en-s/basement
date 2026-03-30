@@ -31,24 +31,24 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <article className="max-w-[var(--container-width)] mx-auto pt-32 pb-32">
         
-        <div className="px-6 md:px-[var(--container-padding)] mb-12">
-          <Link href="/" className="mono text-[10px] uppercase hover:opacity-100 transition-opacity tracking-[0.2em]">
-            ← GO BACK
-          </Link>
-        </div>
+      <div className="back-link-container">
+        <Link href="/" className="back-link">
+          ← GO BACK
+        </Link>
+      </div>
 
         <header className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 border-t border-white/10 pt-10 mb-20 px-6 md:px-[var(--container-padding)]">
           <div>
-            <h1 className="text-[40px] md:text-[52px] font-semibold leading-[90%] md:leading-[95%] tracking-[-0.04em]">
+            <h1 className="blog-post-title">
               {post.title}
             </h1>
           </div>
 
           <div>
             {post.subtitle && (
-              <h2 className="text-[22px] md:text-[26px] font-semibold leading-tight tracking-tight text-white mb-6">
-                {post.subtitle}
-              </h2>
+          <h2 className="blog-post-subtitle">
+            {post.subtitle}
+          </h2>
             )}
             {post.excerpt && (
               <p className="t-excerpt">
