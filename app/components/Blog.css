@@ -5,14 +5,20 @@
   /* padding: 200px 100px; */
 }
 
+
 .blog-heading {
+  font: var(--geist-semibold-40-mobile) 'Geist', sans-serif;
+  letter-spacing: var(--tracking-40-mobile);
+  
   text-align: left;
   color: var(--color-black);
-  font-size: var(--text-hero);
-  line-height: 1;
-  font-weight: 600;
-  width: 80%;
-  letter-spacing: -0.02em;
+  width: 80%; 
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-76-desktop) 'Geist', sans-serif;
+    letter-spacing: var(--tracking-76-desktop);
+
+  }
 }
 
 .blog-filters {
@@ -24,6 +30,25 @@
   padding-bottom: 16px;
   overflow-x: auto;
   scrollbar-width: none;
+}
+
+.blog-filters button,
+.blog-filter-item {
+  font: var(--geist-mono-regular-14-mobile) var(--font-mono);
+  letter-spacing: var(--tracking-mono-14-mobile);
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .blog-filters button,
+  .blog-filter-item {
+    font: var(--geist-mono-regular-14-desktop) var(--font-mono);
+    letter-spacing: var(--tracking-mono-14-desktop);
+  }
 }
 
 .blog-filters::-webkit-scrollbar {
@@ -61,7 +86,7 @@
 }
 
 .blog-card {
-  background:   #FCFCFC40;
+  background:   var(--color-basement-grey);
   border-radius: 20px;
   overflow: hidden;
   backdrop-filter: blur(12px);
@@ -103,16 +128,20 @@
 .blog-card-meta {
   color: #888;
   margin-bottom: 16px;
-  font-size: 14px;
+  font: var(--geist-semibold-13);
+
 }
 
 .blog-card-title {
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 1.1;
+  font: var(--geist-semibold-24-mobile) 'Geist', sans-serif;
+  letter-spacing: var(--tracking-24-mobile);
   margin: 0 0 24px 0;
   color: var(--color-black);
-  /* flex-grow: 1; */
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-24-desktop) 'Geist', sans-serif;
+    letter-spacing: var(--tracking-24-desktop);
+  }
 }
 
 .blog-card-tags {
@@ -143,6 +172,6 @@
 
 @media (max-width: 768px) {
   .blog-grid { grid-template-columns: 1fr; }
-  .blog-heading { font-size: 42px; }
+ 
   .blog-filters { margin-top: 60px; }
 }

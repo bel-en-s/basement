@@ -1,3 +1,5 @@
+//tambien, me hubiese gustado poder aplciarle este shader a la imagen de fondo, pero no pude hacer que funcione a tiempo
+
 "use client";
 
 import { useEffect, useRef } from "react";

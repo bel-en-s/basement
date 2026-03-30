@@ -15,7 +15,6 @@
   letter-spacing: var(--tracking-mono);
   text-transform: uppercase;
 
-  color: var(--color-white);
 }
 
 .main-btn__bg {

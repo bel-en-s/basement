@@ -61,9 +61,9 @@ export default function SecondaryButton({
         onClick?.();
       }}
     >
-      <span className="secondary-btn__container">
-        <span className="secondary-btn__ghost">{text}</span>
-        <span ref={textRef} className="secondary-btn__text">
+      <span className="secondary-btn-container">
+        <span className="secondary-btn-ghost">{text}</span>
+        <span ref={textRef} className="secondary-btn-text">
           {text}
         </span>
       </span>

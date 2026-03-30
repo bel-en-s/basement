@@ -7,7 +7,7 @@
 }
 
 /* =========================
-   TOKENS (DESIGN SYSTEM)
+   design system
 ========================= */
 
 :root {
@@ -20,7 +20,8 @@
   --color-black: #000000;
   --color-orange: #ff4d00;
   --color-dark-grey: rgba(46, 46, 46, 1);
-  --color-grey: #666666;
+  --color-grey: #666666; 
+  --color-basement-grey: #FCFCFC40;
   --color-light-grey: rgba(196, 196, 196, 1);
 
   /* TYPE SCALE (DESKTOP DEFAULT) */
@@ -49,48 +50,62 @@
   --container-width: 92%;
   --container-padding: 100px;
 }
-
 :root {
   /* =========================
      GEIST — DESKTOP
   ========================= */
+  --geist-semibold-76-desktop: 600 76px / 0.9;
+  --tracking-76-desktop: -0.04em;
 
-  --geist-semibold-76-desktop: 600 76px / 0.9 -0.04em;
-  --geist-semibold-38-desktop: 600 38px / 0.95 -0.04em;
-  --geist-semibold-24-desktop: 600 24px / 1.1 -0.03em;
-  --geist-regular-24-desktop: 400 24px / 1.1 -0.03em;
+  --geist-semibold-40-desktop: 600 40px / 0.9;
+  --tracking-40-desktop: -0.04em;
 
-  --geist-semibold-16-desktop: 600 16px / 1.3 0em;
-  --geist-medium-16-desktop: 500 16px / 1.3 0em;
-  --geist-regular-16-desktop: 400 16px / 1.3 0em;
+  --geist-semibold-38-desktop: 600 38px / 0.95;
+  --tracking-38-desktop: -0.04em;
 
-  --geist-mono-regular-14-desktop: 400 14px / 1.4 -0.01em;
+  --geist-semibold-24-desktop: 600 24px / 1.1;
+  --tracking-24-desktop: -0.03em;
 
-  --geist-semibold-13-desktop: 600 13px / 1 0em;
-    --text-hero: 76px;
-}
+  --geist-regular-24-desktop: 400 24px / 1.1;
+  --tracking-24-reg-desktop: -0.03em;
 
-:root {
+  --geist-semibold-16-desktop: 600 16px / 1.3;
+  --geist-medium-16-desktop: 500 16px / 1.3;
+  --geist-regular-16-desktop: 400 16px / 1.3;
+  --tracking-16-desktop: 0em;
+
+  --geist-mono-regular-14-desktop: 400 14px / 1.4;
+  --tracking-mono-14-desktop: -0.01em;
+
+  --geist-semibold-13: 600 13px / 1;
+  --tracking-13-desktop: 0em;
+
   /* =========================
      GEIST — MOBILE
   ========================= */
+  --geist-semibold-40-mobile: 600 40px / 0.9;
+  --tracking-40-mobile: -0.04em;
 
-  --geist-semibold-40-mobile: 600 40px / 0.9 -0.04em;
-  --geist-semibold-24-mobile: 600 24px / 1.1 -0.03em;
-  --geist-regular-20-mobile: 400 20px / 1.1 -0.03em;
+  --geist-semibold-24-mobile: 600 24px / 1.1;
+  --tracking-24-mobile: -0.03em;
 
-  --geist-semibold-16-mobile: 600 16px / 1.3 0em;
-  --geist-medium-16-mobile: 500 16px / 1.3 0em;
-  --geist-regular-16-mobile: 400 16px / 1.3 0em;
+  --geist-regular-20-mobile: 400 20px / 1.1;
+  --tracking-20-mobile: -0.03em;
 
-  --geist-semibold-14-mobile: 600 14px / 1.3 0em;
-  --geist-regular-14-mobile: 400 14px / 1.3 0em;
+  --geist-semibold-16-mobile: 600 16px / 1.3;
+  --geist-medium-16-mobile: 500 16px / 1.3;
+  --geist-regular-16-mobile: 400 16px / 1.3;
 
-  --geist-mono-regular-14-mobile: 400 14px / 1.4 -0.01em;
+  --geist-semibold-14-mobile: 600 14px / 1.3;
+  --geist-regular-14-mobile: 400 14px / 1.3;
 
-  --geist-semibold-13-mobile: 600 13px / 1 0em;
+  --geist-mono-regular-14-mobile: 400 14px / 1.4;
+  --tracking-mono-14-mobile: -0.01em;
+
+  --geist-mono-regular-12-mobile: 600 12px / 1.4;
+
+  --geist-semibold-13-mobile: 600 13px / 1;
 }
-
 /* =========================
    BASE
 ========================= */
@@ -148,15 +163,18 @@ body {
 }
 
 .h-hero {
-  font-family: var(--font-sans);
-  font-size: var(--t-hero);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  font-weight: 600;
+  font: var(--geist-semibold-40-mobile) var(--font-sans);
+  letter-spacing: var(--tracking-40-mobile);
+  
   color: var(--color-white);
   padding-top: 100px;
   position: relative;
   z-index: 2;
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-76-desktop) var(--font-sans);
+    letter-spacing: var(--tracking-76-desktop);
+  }
 }
 
 .h-hero span {
@@ -172,21 +190,6 @@ body {
    TYPOGRAPHY SYSTEM (KEY)
 ========================= */
 
-/* HERO */
-.t-hero {
-  font-size: var(--t-hero);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--ls-tight);
-  font-weight: 600;
-}
-
-/* H1 */
-.t-h1 {
-  font-size: var(--t-h1);
-  line-height: 0.95;
-  letter-spacing: var(--ls-tight);
-  font-weight: 600;
-}
 
 /* H2 */
 .t-h2 {
@@ -203,20 +206,6 @@ body {
   letter-spacing: var(--ls-mid);
 }
 
-/* BODY */
-.t-body {
-  font-size: var(--t-body);
-  line-height: var(--lh-normal);
-}
-
-/* UI */
-.t-ui {
-  font-size: var(--t-ui);
-  line-height: var(--lh-normal);
-  font-weight: 500;
-}
-
-/* MONO */
 .t-mono {
   font-family: var(--font-mono);
   font-size: var(--t-mono);
@@ -224,7 +213,7 @@ body {
   letter-spacing: var(--ls-mono);
 }
 
-/* CAPTION */
+
 .t-caption {
   font-size: var(--t-caption);
   line-height: 1;
@@ -232,15 +221,15 @@ body {
 }
 
 /* =========================
-   LEGACY CLASSES (compatibilidad)
+
 ========================= */
 
-.h1 {
+/* .h1 {
   font-size: var(--t-h1);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);
   font-weight: 600;
-}
+} */
 
 .h2 {
   font-size: var(--t-h2);

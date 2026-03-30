@@ -29,6 +29,7 @@ export default function BlogCard({
     year: "numeric",
   });
 
+
   return (
     <article className={`blog-card ${!showImage ? "no-image" : ""}`}>
       {showImage && (
@@ -38,7 +39,7 @@ export default function BlogCard({
       )}
 
       <div className="blog-card-content">
-        <div className="blog-card-meta mono">
+        <div className="blog-card-meta">
           <span>{formattedDate}</span>
         </div>
 

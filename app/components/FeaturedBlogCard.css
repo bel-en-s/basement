@@ -1,4 +1,20 @@
-/* FeaturedBlogCard.css */
+.featured-card-title {
+
+  font: var(--geist-semibold-24-mobile) 'Geist', sans-serif;
+  letter-spacing: var(--tracking-24-mobile);
+  
+
+  margin: 0 0 16px 0;
+  color: var(--color-white);
+  text-align: left; 
+
+  @media (min-width: 1024px) {
+
+    font: var(--geist-semibold-38-desktop) 'Geist', sans-serif;
+    letter-spacing: var(--tracking-38-desktop);
+  }
+}
+
 .featured-card {
   /* opacity: 0; */
   display: flex;
@@ -52,7 +68,7 @@ transition:
   display: flex;
   flex-direction: column;
   padding-right: 20px;
-  pointer-events: none; /* evita que bloquee el tilt */
+  pointer-events: none;
 }
 
 .card-date {
@@ -61,26 +77,24 @@ transition:
   font-size: var(--geist-semibold-13);
 }
 
-.card-title {
-  font-size: var(--text-h2);
-  line-height: 1.1;
-  font-weight: 600;
-  margin: 0 0 16px 0;
-  color: var(--color-white);
-}
 
 .card-tags {
   display: flex;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
 }
 
 .card-description {
-  color: #a1a1a1;
-  font-size: 16px;
-  line-height: 1.4;
+  font: var(--geist-regular-14-mobile) 'Geist', sans-serif;
+  letter-spacing: 0;
+  color: var(--color-light-grey);
   margin-bottom: 40px;
   max-width: 340px;
+
+  @media (min-width: 1024px) {
+    font: var(--geist-semibold-16-desktop) 'Geist', sans-serif;
+    letter-spacing: var(--tracking-16-desktop);
+  }
 }
 
 .card-link {
