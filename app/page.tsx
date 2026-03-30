@@ -48,22 +48,9 @@ export default async function Home() {
 
   return (
     <main>
-            <Image
-          src="/bg-hero.webp"
-          alt="Hero Background"
-          fill
-          priority
-          quality={65}
-          className="hero-bg-image"
-          sizes="100vw"
-          style={{ 
-            objectFit: 'cover', 
-            objectPosition: '5% 50%',
-     
-          }}
-        />
-      <section className="hero" style={{ position: 'relative', minHeight: '100vh' }}>
-  
+            
+      <section className="hero">
+
         <Navbar />
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <HeroTitle />
