@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-column">
-            <span className="footer-label mono">Website</span>
+            <span className="footer-label">Website</span>
             <ul className="footer-list">
               <li><Link href="/">Home</Link></li>
               <li><Link href="/services">Services</Link></li>

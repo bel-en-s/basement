@@ -1,5 +1,6 @@
 //esto me lo recomendo hacer la ia por si quisiese hacer esto editable desde sanity, pero no me dio el tiempo. No se si lo ideal
-//seria tener todos los textos modularizados
+//seria tener todos los textos modularizados. 
+//puse dos textos para que se vean los cortes exactos
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -35,7 +36,7 @@ export default function HeroTitle() {
   return (
     <h1 ref={containerRef} className="h-hero">
       
-      {/* DESKTOP */}
+  
       <div className="hidden md:block">
         <span className="block ">
           <span className="line-inner block opacity-0">
@@ -54,7 +55,6 @@ export default function HeroTitle() {
         </span>
       </div>
 
-      {/* MOBILE: Ultra-compacto */}
       <div className="block md:hidden leading-[0.9] tracking-tighter">
         <span className="block  pb-0.5">
           <span className="line-inner block opacity-0">
