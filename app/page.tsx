@@ -7,9 +7,10 @@ import HeroTitle from "./components/HeroTitle";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 
-const FeaturedBlogCard = dynamic(() => import("./components/FeaturedBlogCard"));
-const Blog = dynamic(() => import("./components/Blog"));
-const Footer = dynamic(() => import("./components/Footer"));
+import FeaturedBlogCard from "./components/FeaturedBlogCard";
+import Blog from "./components/Blog";
+import Footer from "./components/Footer";
+
 const HeroShader = dynamic(() => import("./components/shaders/HeroShader"));
 
 import ReloadOnReturn from "./components/utils/reloadOnReturn";

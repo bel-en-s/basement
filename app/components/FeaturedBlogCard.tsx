@@ -5,7 +5,7 @@ import gsap from "gsap";
 import "./FeaturedBlogCard.css";
 import Tag from "./UI/Tag";
 import SecondaryButton from "./UI/SecondaryButton";
-import GlitchImageHover from "./UI/GlitchImageHover";
+import Image from "next/image";
 
 interface FeaturedBlogProps {
   data: {
@@ -42,10 +42,12 @@ export default function FeaturedBlogCard({ data }: FeaturedBlogProps) {
     <article className="featured-card" ref={cardRef}>
       <div className="card-image">
         {data.image ? (
-          <GlitchImageHover
+          <Image
             src={data.image}
             alt={data.title}
             className="featured-img-render"
+            fill
+            style={{ objectFit: "cover" }}
           />
         ) : (
           <div className="placeholder-img" style={{ width: 800, height: 500, background: '#222' }} />

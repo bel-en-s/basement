@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Tag from "./Tag";
 import SecondaryButton from "./SecondaryButton";
-import GlitchImageHover from "./GlitchImageHover";
+import Image from "next/image";
 
 interface BlogCardProps {
   id?: string;
@@ -35,7 +35,7 @@ export default function BlogCard({
     <article className={`blog-card ${!showImage ? "no-image" : ""}`}>
       {showImage && (
         <div className="blog-card-image">
-          <GlitchImageHover src={image} alt={title} className="blog-card-img" />
+          <Image src={image} alt={title} className="blog-card-img" fill style={{ objectFit: "cover" }} />
         </div>
       )}
 
