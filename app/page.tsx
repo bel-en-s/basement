@@ -3,11 +3,15 @@
 
 import { client } from "./sanity/client";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import FeaturedBlogCard from "./components/FeaturedBlogCard";
-import Blog from "./components/Blog";
 import HeroTitle from "./components/HeroTitle";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+import FeaturedBlogCard from "./components/FeaturedBlogCard";
+import Blog from "./components/Blog";
+import Footer from "./components/Footer";
+
+const HeroShader = dynamic(() => import("./components/shaders/HeroShader"));
 
 import ReloadOnReturn from "./components/utils/reloadOnReturn";
 
@@ -19,7 +23,7 @@ async function getData() {
     backgroundImage,
     sections[]{ title, links[]{ label, href } }
   }`;
-const postsQuery = `*[_type == "post"] | order(order asc) {
+  const postsQuery = `*[_type == "post"] | order(order asc) {
   "id": _id,
   "date": publishedAt,
   title,
@@ -44,7 +48,7 @@ const postsQuery = `*[_type == "post"] | order(order asc) {
 }
 
 export default async function Home() {
-  
+
   const { posts, allCategories } = await getData();
 
   const featuredPost = posts?.find((post: any) => post.featured === true);
@@ -53,17 +57,18 @@ export default async function Home() {
     <main>
       {/* <ReloadOnReturn /> */}
       <section className="hero">
-      <Image 
-          src="/bg-hero.webp" 
+        <Image
+          src="/bg-hero.webp"
           alt="Hero Background"
           fill
-          priority 
-          fetchPriority="high" 
-        loading="eager"
-          quality={85}
-          className="object-cover -z-10" 
+          priority
+          fetchPriority="high"
+          loading="eager"
+          quality={75}
+          className="object-cover -z-10"
           style={{ objectPosition: 'center -170%', }}
         />
+        <HeroShader />
         <Navbar />
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <HeroTitle />
@@ -72,10 +77,10 @@ export default async function Home() {
       </section>
 
       <div>
-        <Blog 
-          initialPosts={posts || []} 
-          categoriesFromSanity={allCategories || []} 
-        />      
+        <Blog
+          initialPosts={posts || []}
+          categoriesFromSanity={allCategories || []}
+        />
         <Footer />
       </div>
     </main>

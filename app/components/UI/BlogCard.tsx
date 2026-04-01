@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Tag from "./Tag";
 import SecondaryButton from "./SecondaryButton";
+import Image from "next/image";
 
 interface BlogCardProps {
   id?: string;
@@ -34,7 +35,7 @@ export default function BlogCard({
     <article className={`blog-card ${!showImage ? "no-image" : ""}`}>
       {showImage && (
         <div className="blog-card-image">
-          <img className="blog-card-img" src={image} alt={title} />
+          <Image src={image} alt={title} className="blog-card-img" fill style={{ objectFit: "cover" }} />
         </div>
       )}
 
@@ -44,15 +45,15 @@ export default function BlogCard({
         </div>
 
         <h3 className="blog-card-title">{title}</h3>
-        
+
         {category && category.length > 0 && (
           <div className="blog-card-tags">
             <Tag labels={category} variant="light" />
           </div>
         )}
-        
+
         <div className="blog-card-footer">
-   
+
           <Link href={`/blog/${slug}`} className="inline-block">
             <SecondaryButton text="Read More" variant="white" />
           </Link>

@@ -25,6 +25,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
   if (!post) return <div className="min-h-screen bg-black" />;
 
+  const getDelay = (index: number) => ({ animationDelay: `${0.2 + index * 0.1}s` });
+
   return (
     <main className="bg-black text-white min-h-screen selection:bg-orange-500">
       <Navbar />
@@ -40,26 +42,38 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <header className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 border-t border-white/10 pt-10 mb-20 px-6 md:px-[var(--container-padding)]">
           <div>
             <h1 className="blog-post-title">
-              {post.title}
+              <span className="block overflow-hidden">
+                <span className="line-inner block animate-hero-reveal" style={getDelay(0)}>
+                  {post.title}
+                </span>
+              </span>
             </h1>
           </div>
 
           <div>
             {post.subtitle && (
           <h2 className="blog-post-subtitle">
-            {post.subtitle}
+            <span className="block overflow-hidden">
+              <span className="line-inner block animate-hero-reveal" style={getDelay(1)}>
+                {post.subtitle}
+              </span>
+            </span>
           </h2>
             )}
             {post.excerpt && (
               <p className="t-excerpt">
-                {post.excerpt}
+                <span className="block overflow-hidden">
+                  <span className="line-inner block animate-hero-reveal" style={getDelay(2)}>
+                    {post.excerpt}
+                  </span>
+                </span>
               </p>
             )}
           </div>
         </header>
 
-        <div className="w-full mb-20 md:mb-32">
-          <div className="w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-zinc-900 border-y md:border border-white/10 md:rounded-sm">
+        <div className="w-full mb-20 md:mb-32 block overflow-hidden">
+          <div className="w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-zinc-900 border-y md:border border-white/10 md:rounded-sm animate-hero-reveal" style={getDelay(3)}>
             <img 
               src={post.image} 
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out hover:scale-105" 
