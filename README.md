@@ -9,6 +9,8 @@ basement-six.vercel.app
 
 ## Approach
 
+I started crafting this blog website by analizing figma, and understanding the amount of sections and components to build a basic architecture. After having the basic files, i started building each layout comparing to figa. I created variables and typographic systems. I tried to compare everything with the figma files by screenshots, later on I had to prioritice other things. The connection with sanity was something that I had never done and took me a while, specially the instalation. I optimizated components and explored what ranked me better in Lighthouse.  Later, I added shaders to the images and optimizated 
+
 BLOG-
 To maintain the high-fidelity design of the Side Quotes, I implemented them as Structured Objects instead of simple text blocks.
 

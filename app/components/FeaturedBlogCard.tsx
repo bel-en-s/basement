@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import gsap from "gsap";
 import "./FeaturedBlogCard.css";
 import Tag from "./UI/Tag";
 import SecondaryButton from "./UI/SecondaryButton";
+import GlitchImageHover from "./UI/GlitchImageHover";
 
 interface FeaturedBlogProps {
   data: {
@@ -42,12 +42,9 @@ export default function FeaturedBlogCard({ data }: FeaturedBlogProps) {
     <article className="featured-card" ref={cardRef}>
       <div className="card-image">
         {data.image ? (
-          <Image 
-            src={data.image} 
-            alt={data.title} 
-            width={800} 
-            height={500} 
-            priority 
+          <GlitchImageHover
+            src={data.image}
+            alt={data.title}
             className="featured-img-render"
           />
         ) : (
@@ -63,19 +60,19 @@ export default function FeaturedBlogCard({ data }: FeaturedBlogProps) {
             year: 'numeric'
           }) : "Recent Post"}
         </span>
-        
+
         <h2 className="featured-card-title">{data.title}</h2>
-        
+
         <div className="card-tags">
           {data.categories?.length > 0 && (
             <Tag labels={data.categories} variant="dark" />
           )}
         </div>
-        
+
         <p className="card-description body">
           {data.featuredText ? (
-            data.featuredText.length > 160 
-              ? `${data.featuredText.substring(0, 160)}...` 
+            data.featuredText.length > 160
+              ? `${data.featuredText.substring(0, 160)}...`
               : data.featuredText
           ) : (
             "No description available for this post."
