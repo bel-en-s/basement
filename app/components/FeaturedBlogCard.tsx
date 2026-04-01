@@ -22,24 +22,24 @@ interface FeaturedBlogProps {
 export default function FeaturedBlogCard({ data }: FeaturedBlogProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!data || !cardRef.current) return;
+  const handleMouseEnter = () => {
+    if (cardRef.current) gsap.to(cardRef.current, { y: -10, duration: 0.4, ease: "power2.out", overwrite: true });
+  };
 
-    gsap.set(cardRef.current, { y: 30, opacity: 0 });
-
-    gsap.to(cardRef.current, {
-      y: 0,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power4.out",
-      delay: 0.5,
-    });
-  }, [data]);
+  const handleMouseLeave = () => {
+    if (cardRef.current) gsap.to(cardRef.current, { y: 0, duration: 0.4, ease: "power2.out", overwrite: true });
+  };
 
   if (!data) return null;
 
   return (
-    <article className="featured-card" ref={cardRef}>
+    <div style={{ animation: "card-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both" }}>
+    <article 
+      className="featured-card" 
+      ref={cardRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="card-image">
         {data.image ? (
           <Image
@@ -86,5 +86,6 @@ export default function FeaturedBlogCard({ data }: FeaturedBlogProps) {
         </Link>
       </div>
     </article>
+    </div>
   );
 }
